@@ -115,18 +115,23 @@ float** escolha(float** mat, int linha, int coluna){
 }
 void metodo( float** mat, float* vet,  int linha, int coluna){
     float m;
+    float aux;
     for(int i =0; i < constante; i++){
 
         for(int j = i+1; j < constante; j++){
             cout<<"Diagonal principal atual :"<<mat[i][i] << endl;;
             m = ((-1 * mat[j][i])/mat[i][i]);
             cout<< "Valor de m:"<< m << endl;
-            cout << "Valor de elemento " << mat[j][i] << endl;
-            float aux = m * mat[i][i];
-            cout << "Valor do aux " << aux;
-            mat[j][i] = mat[j][i] + aux;
-            cout <<"Valor atualizado: "  << mat[j][i] << endl;
-            vet[j] = vet[j] + (m * vet[j-1]);
+            for(int w = i; w < constante; w++){
+                cout << "Valor de elemento " << mat[j][w] << endl;
+                aux = m * mat[i][w];
+                mat[j][w] = mat[j][w] + aux;
+                cout <<"Valor atualizado: "  << mat[j][w] << endl;
+                
+            }
+            aux = m * vet[i];
+            vet[j] = vet[j] + aux;
+            cout << "Valor do vetor b = " << vet[j] << endl;  
         }
     }
 

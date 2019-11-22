@@ -19,7 +19,7 @@ struct Alimento{
 //7 manga
 //8 maça
 //9 abacate
-//10 caju
+//10 cajuu
 #define constante 3
 void preencheMatriz(float **mat, float calorias,  float proteina,  float carboidrato,  float fibra, float gordura, int linha);
 void imprime(float **mat, int linha, int coluna);

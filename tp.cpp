@@ -20,7 +20,7 @@ struct Alimento{
 //8 maça
 //9 abacate
 //10 caju
-
+#define constante 3
 void preencheMatriz(float **mat, float calorias,  float proteina,  float carboidrato,  float fibra, float gordura, int linha);
 void imprime(float **mat, int linha, int coluna);
 float** escolha(float **mat, int linha, int coluna);
@@ -29,14 +29,14 @@ int main(){
     float  **mat = new float*[10];
     for (int i = 0; i < 10; i++)
     {
-        mat[i] = new float[5];
+        mat[i] = new float[constante];
     }    
-    float **mat1 = new float*[6];
+    float **mat1 = new float*[constante];
     for (int i = 0; i < 5; i++)
     {
-        mat1[i] = new float[6];
+        mat1[i] = new float[constante];
     }
-    float *vetProteina = new float[5];
+    float *vetProteina = new float[constante];
     vetProteina[0] = 2000;
     vetProteina[1] = 75;
     vetProteina[2] = 300;
@@ -52,14 +52,14 @@ int main(){
     preencheMatriz(mat, 52, 0.26, 13.81, 2.4 , 0.17, 7);
     preencheMatriz(mat, 160, 2, 8.53, 6.7, 14.66, 8);
     preencheMatriz(mat, 43, 0.21, 11.41, 2, 0.14, 9);
-    imprime(mat, 10, 5);
-    mat1 = escolha(mat, 5, 5);
-    imprime(mat1, 5, 5);
+    imprime(mat, 10, constante);
+    mat1 = escolha(mat, constante, constante);
+    imprime(mat1, constante, constante);
     cout << endl;
     cout << endl;
     cout << endl;
     cout << endl;
-    metodo(mat1, vetProteina, 5,5);
+    metodo(mat1, vetProteina, constante,constante);
     return 0;
 }
 void preencheMatriz(float ** mat, float calorias,  float proteina,  float carboidrato,  float fibra, float gordura, int linha){
@@ -96,18 +96,18 @@ float** escolha(float** mat, int linha, int coluna){
     cout << "Abacate =  9 " << endl; 
     cout << "Caju =   10 " << endl; 
     cout << "Escolha as 5 frutas sequencialmente: " << endl;
-    for(int i =0; i < 5; i++){
+    for(int i =0; i < constante; i++){
         cout << " Opcao " << i+1 << " :";
         cin >> vetor[i];
         cout << endl;
     }
-    float **mat1 = new float*[5];
-    for (int i = 0; i < 5; i++){
-        mat1[i] = new float[5];
+    float **mat1 = new float*[constante];
+    for (int i = 0; i < constante; i++){
+        mat1[i] = new float[constante];
     }
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < constante; i++)
     {
-        for(int j = 0; j < 5; j++){
+        for(int j = 0; j < constante; j++){
             mat1[i][j] = mat[j][vetor[i - 1]];
         }
     }
@@ -115,9 +115,9 @@ float** escolha(float** mat, int linha, int coluna){
 }
 void metodo( float** mat, float* vet,  int linha, int coluna){
     float m;
-    for(int i =0; i < 5; i++){
+    for(int i =0; i < constante; i++){
 
-        for(int j = i+1; j < 5; j++){
+        for(int j = i+1; j < constante; j++){
             cout<<"Diagonal principal atual :"<<mat[i][i] << endl;;
             m = ((-1 * mat[j][i])/mat[i][i]);
             cout<< "Valor de m:"<< m << endl;
@@ -130,16 +130,16 @@ void metodo( float** mat, float* vet,  int linha, int coluna){
         }
     }
 
-    imprime(mat,5,5);
-    for(int i = 0; i < 5; i++){
+    imprime(mat,constante,constante);
+    for(int i = 0; i < constante; i++){
         cout << "vetor 1 " << vet[i] << endl;
     }
-    float *vetFinal = new float[linha];
+    float *vetFinal = new float[constante];
     float soma;
-    vetFinal[4] = (vet[4]/mat[4][4]);
+    vetFinal[constante -1] = (vet[constante -1]/mat[constante -1][constante -1]);
     for(int i = linha - 2; i >= 0; i--){
         soma = 0;
-        for(int j = i + 1; j <5; j++){
+        for(int j = i + 1; j <constante; j++){
             soma = soma + mat[i][j] * vetFinal[j]; 
         }
         //soma = mat[i][i] + (mat[i][i+1] * vetFinal[i+1]);
